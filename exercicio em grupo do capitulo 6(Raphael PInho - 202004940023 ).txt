@@ -1,0 +1,22 @@
+17:50 17/02/2025
+
+Sistemas Distribuídos
+
+Docente: MARCOS TULIO AMARIS GONZALEZ
+Discente: 
+	Raphael Pinho;
+	Mario Roberto;
+	Cristian marinho;
+	Keanu sales.
+
+6.6 No contexto de um serviço de comunicação em grupo, dê exemplos de trocas de mensagem que ilustram a diferença entre ordenação causal e total. página 236 
+
+A ordem causal leva em conta a causa e o efeito da mensagem, ou seja, se uma mensagem A tiver um impacto em uma mensagem B, A aparecerá antes que B. 
+Enquanto na ordem total, independente do impacto da mensagem, as mensagens serão amostradas na mesma ordem em que foram enviadas
+
+6.7 Considere o exemplo Fire Alarm escrito usando JGroups (Seção 6.2.3). Suponha que ele foi generalizado para suportar uma variedade de tipos de alarme, como incêndio, enchente, invasão, etc. Quais são os requisitos deste aplicativo em termos de confiabilidade e de ordenação? página 230, página 240
+
+para os requisitos em termos de confiabilidade, ele tem de necessariamente garantir uma entrega confiável, onde a mensagem de alarme tem de ser entregue a todos os nós do sistema sem perda, onde nenhuma das notificações podem ser ignoradas, onde pode ser utilizado o protocolo TCP, para que isso ocorra e com isso garantir a entrega das mensagens
+
+pode ser usado a ordenação causal, como, por exemplo, o alarme 1 detecta a fumaça e avisa, enquanto o alarme 2 confirma o incêndio, ou seja, o alarme 2 tem de ser acionado necessariamente após o alarme 1, usado com o protocolo causal
+pode ser por ordenação total, em cenários que a ordem das mensagens é crítica como, por exemplo, invasão detectada, que a posteriori emite um alarme, sistema de segurança acionado, este utilizado pelo total-order
